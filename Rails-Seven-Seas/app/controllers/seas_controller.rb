@@ -1,6 +1,36 @@
+require "pry"
+
 class SeasController < ApplicationController
   #define your controller actions here
+  def index
+    @seas = Sea.all 
+  end 
 
+  def show
+   @sea = Sea.find(params[:id])
+  end 
+
+  def edit
+    @sea = Sea.find(params[:id])
+  end 
+
+  def update
+     @sea = Sea.find(params[:id])
+
+#     @sea.name = params[:name]
+#     @sea.temperature = params[:temperature]
+#     @sea.bio = params[:bio]
+#     @sea.image_url = params[:image_url]
+#     @sea.mood = params[:mood]
+#     @sea.favorite_color = params[:favorite_color]
+#     @sea.scariest_creature = params[:scariest_creature]
+#     @sea.has_mermaids = params[:has_mermaids]
+#     @sea.save
+#  binding.pry
+#     redirect_to sea_path(@sea)
+  end 
+
+  
 
   private
   # In controller actions, use this private method to access sea params from forms.
@@ -9,5 +39,7 @@ class SeasController < ApplicationController
   def sea_params
     params.require(:sea).permit(:name, :temperature, :bio, :mood, :image_url, :favorite_color, :scariest_creature, :has_mermaids)
   end
+
+ 
 
 end
