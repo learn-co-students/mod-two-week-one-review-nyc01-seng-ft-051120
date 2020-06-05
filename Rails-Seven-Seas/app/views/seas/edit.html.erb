@@ -26,3 +26,9 @@
   <%=  f.submit %>
 
   <% end %>
+
+    <form action="/seas/<%=@sea.id%>" method="POST" style="margin: 0 auto">
+      <input type="hidden" name="_method" value="DELETE" />
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input class="btn btn-danger" type="submit" value="Delete"/>
+    </form>
