@@ -1,4 +1,3 @@
-require "pry"
 
 class SeasController < ApplicationController
   #define your controller actions here
@@ -15,21 +14,26 @@ class SeasController < ApplicationController
   end 
 
   def update
-     @sea = Sea.find(params[:id])
-
-#     @sea.name = params[:name]
-#     @sea.temperature = params[:temperature]
-#     @sea.bio = params[:bio]
-#     @sea.image_url = params[:image_url]
-#     @sea.mood = params[:mood]
-#     @sea.favorite_color = params[:favorite_color]
-#     @sea.scariest_creature = params[:scariest_creature]
-#     @sea.has_mermaids = params[:has_mermaids]
-#     @sea.save
-#  binding.pry
-#     redirect_to sea_path(@sea)
+    @sea = Sea.find(params[:id])
+    @sea.update(sea_params)
+    @sea.save
+    redirect_to sea_path(@sea)
   end 
 
+  def new 
+    @sea = Sea.new
+  end
+
+  def create 
+    @sea = Sea.create(sea_params)
+    redirect_to sea_path(@sea)
+  end
+
+  def destroy
+    @sea = Sea.find(params[:id])
+    @sea.destroy
+    redirect_to seas_path
+  end
   
 
   private
